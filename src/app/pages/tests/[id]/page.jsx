@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {useParams} from 'next/navigation';
 import CodeEditor from "../../../components/CodeEditor";
 import {useState, useEffect} from "react";
@@ -11,45 +11,41 @@ const PageId = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-            const fetchFunctionDetails = async () => {
-                try {
-                    const response = await fetch(`/api/getFunctionDetails/${id}`);
+        const fetchFunctionDetails = async () => {
+            try {
+                const response = await fetch(`/api/getFunctionDetails/${id}`); // исправлено
 
-                    if (!response.ok) {
-                        throw new Error('Не удалось загрузить данные');
-                    }
-
-                    const data = await response.json();
-                    setFunctionName(data.functionName);
-                    setDescription(data.description);
-                } catch (err) {
-                    if (err.type === 'cancelation') {
-                        handleLog('Операция отменена: ' + err.msg);
-                    }
-                    setError(err.message);
-                } finally {
-                    setLoading(false);
+                if (!response.ok) {
+                    const errorData = await response.json(); // Извлекаем данные ошибки
+                    throw new Error(errorData.error || 'Не удалось загрузить данные'); // Используем сообщение, если оно существует
                 }
-            }
-            if (id) { // Добавлено условие на случай, если id еще не загружен
-                fetchFunctionDetails();
-            }
-        }, [id]
-    )
-    ;
 
+                const data = await response.json();
+                setFunctionName(data.functionName);
+                setDescription(data.description);
+            } catch (err) {
+                setError(err.message); // Убедитесь, что сообщение об ошибке является строкой
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) {
+            fetchFunctionDetails();
+        }
+    }, [id]);
 
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <div>Ошибка: {error.message || JSON.stringify(error)}</div>;
     }
 
     return (
         <div>
             {loading ? <div>Загрузка...</div> :
                 <CodeEditor id={id} functionName={functionName} description={description}/>
-            } </div>
-    )
-        ;
+            }
+        </div>
+    );
 };
 
 export default PageId;

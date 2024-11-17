@@ -37,7 +37,7 @@ const CodeEditor = ({id,functionName,description}) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ code, id }),
+                body: { code, id },
             });
 
             if (!response.ok) {
