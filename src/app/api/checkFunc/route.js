@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 export async function POST(request) {
-    const { code, id } = await request.json(); // Добавляем id в запрос
+    const { code, id } = await request.json();
     // Проверка наличия кода функции и id
     if (!code) {
         return NextResponse.json({ error: 'Необходимо передать код функции.' }, { status: 400 });
@@ -33,7 +33,7 @@ export async function POST(request) {
     } catch (error) {
         return NextResponse.json({ error: 'Ошибка при чтении файла тестов: ' + error.message }, { status: 500 });
     }
-    const {tests} = testCases
+    const {tests,functionName,description} = testCases
     const results = tests.map(({ input, expected }) => {
         try {
             const output = isEvenFunction(input);
@@ -55,5 +55,5 @@ export async function POST(request) {
     });
 
 
-    return NextResponse.json(results);
+    return NextResponse.json({results,functionName,description});
 }

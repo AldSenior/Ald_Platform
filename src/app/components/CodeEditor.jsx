@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import Editor, { useMonaco } from '@monaco-editor/react';
 
-const CodeEditor = ({id}) => {
+const CodeEditor = ({id,functionName,description}) => {
       // Получаем ID из параметров маршрута
     const monaco = useMonaco();
-    const [code, setCode] = useState("// Напишите свою функцию\nfunction isEven(num) {\n\treturn num % 2 === 0;\n}");
+    const [code, setCode] = useState(`// ${description}\nfunction ${functionName}(num) {\n\n}`)
     const [output, setOutput] = useState("");
     const [isRunning, setIsRunning] = useState(false);
 
@@ -37,7 +37,7 @@ const CodeEditor = ({id}) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ code, id }), // Передаем ID в запросе
+                body: JSON.stringify({ code, id }),
             });
 
             if (!response.ok) {
@@ -45,18 +45,15 @@ const CodeEditor = ({id}) => {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Ошибка в серверном ответе');
             }
-
-            const result = await response.json();
-
             // Выводим результаты тестов
-            result.forEach(({ input, expected, output, passed }) => {
+            results.forEach(({ input, expected, output, passed }) => {
                 const resultMessage = `Входные данные: ${input} | Ожидалось: ${expected} | Получено: ${output} | ${passed ? 'Успех' : 'Неудача'}`;
                 handleLog(resultMessage);
             });
         } catch (error) {
             handleLog(`Ошибка: ${error.message}`);
         } finally {
-            setIsRunning(false); // Всегда возвращаем состояние "не выполняется"
+            setIsRunning(false);
         }
     };
 
