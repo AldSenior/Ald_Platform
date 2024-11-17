@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import Editor, { useMonaco } from '@monaco-editor/react';
 
-const CodeEditor = () => {
+const CodeEditor = ({id}) => {
+      // Получаем ID из параметров маршрута
     const monaco = useMonaco();
     const [code, setCode] = useState("// Напишите свою функцию\nfunction isEven(num) {\n\treturn num % 2 === 0;\n}");
     const [output, setOutput] = useState("");
@@ -20,8 +21,9 @@ const CodeEditor = () => {
     };
 
     const handleRunCode = async () => {
+
         if (isRunning) return; // Не обрабатывать, если уже выполняется
-        setIsRunning(true)
+        setIsRunning(true);
         if (!code.trim()) { // Проверка на пустоту
             handleLog('Ошибка: Код не может быть пустым');
             return;
@@ -35,7 +37,7 @@ const CodeEditor = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ code }),
+                body: JSON.stringify({ code, id }), // Передаем ID в запросе
             });
 
             if (!response.ok) {
@@ -43,7 +45,6 @@ const CodeEditor = () => {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Ошибка в серверном ответе');
             }
-
 
             const result = await response.json();
 
@@ -54,12 +55,10 @@ const CodeEditor = () => {
             });
         } catch (error) {
             handleLog(`Ошибка: ${error.message}`);
-        }
-        finally {
+        } finally {
             setIsRunning(false); // Всегда возвращаем состояние "не выполняется"
         }
     };
-
 
     return (
         <div>

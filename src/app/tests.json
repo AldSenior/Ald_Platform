@@ -1,0 +1,38 @@
+{
+  "1": {
+    "functionName": "isEven",
+    "description": "Определяет, является ли число четным.",
+    "tests": [
+      { "input": 2, "expected": true },
+      { "input": 3, "expected": false },
+      { "input": 0, "expected": true },
+      { "input": -1, "expected": false },
+      { "input": 4, "expected": true },
+      { "input": 5, "expected": false },
+      { "input": 6, "expected": true }
+    ]
+  },
+  "2": {
+    "functionName": "isOdd",
+    "description": "Определяет, является ли число нечетным.",
+    "tests": [
+      { "input": 1, "expected": true },
+      { "input": 2, "expected": false },
+      { "input": -1, "expected": true },
+      { "input": 0, "expected": false },
+      { "input": 3, "expected": true },
+      { "input": 4, "expected": false }
+    ]
+  },
+  "3": {
+    "functionName": "isPositive",
+    "description": "Проверяет, является ли число положительным.",
+    "tests": [
+      { "input": 1, "expected": true },
+      { "input": -1, "expected": false },
+      { "input": 0, "expected": false },
+      { "input": 10, "expected": true },
+      { "input": -10, "expected": false }
+    ]
+  }
+}

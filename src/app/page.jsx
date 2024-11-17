@@ -5,8 +5,7 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            <h1>Интерактивный редактор кода</h1>
-            <CodeEditor />
+           <h1>Home Page</h1>
             {/* Дополнительные элементы интерфейса */}
         </div>
     );
