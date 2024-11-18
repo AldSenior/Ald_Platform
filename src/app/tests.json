@@ -34,5 +34,188 @@
       { "input": 10, "expected": true },
       { "input": -10, "expected": false }
     ]
+  },
+  "4": {
+    "functionName": "countVowels",
+    "description": "Подсчитывает количество гласных букв в строке.",
+    "tests": [
+      { "input": "hello", "expected": 2 },
+      { "input": "world", "expected": 1 },
+      { "input": "aeiou", "expected": 5 },
+      { "input": "xyz", "expected": 0 },
+      { "input": "HELLO", "expected": 2 }
+    ]
+  },
+  "5": {
+    "functionName": "isPalindrome",
+    "description": "Проверяет, является ли строка палиндромом.",
+    "tests": [
+      { "input": "racecar", "expected": true },
+      { "input": "hello", "expected": false },
+      { "input": "level", "expected": true },
+      { "input": "world", "expected": false },
+      { "input": "A man a plan a canal Panama", "expected": true }
+    ]
+  },
+  "6": {
+    "functionName": "removeDuplicates",
+    "description": "Удаляет дубликаты из массива.",
+    "tests": [
+      { "input": [1, 2, 2, 3, 4, 4], "expected": [1, 2, 3, 4] },
+      { "input": ["a", "b", "a", "c"], "expected": ["a", "b", "c"] },
+      { "input": [], "expected": [] },
+      { "input": [1, 1, 1, 1], "expected": [1] }
+    ]
+  },
+  "7": {
+    "functionName": "capitalizeFirstLetter",
+    "description": "Превращает первую букву каждого слова в строке в заглавную.",
+    "tests": [
+      { "input": "hello world", "expected": "Hello World" },
+      { "input": "javascript is fun", "expected": "Javascript Is Fun" },
+      { "input": "a b c d", "expected": "A B C D" },
+      { "input": "", "expected": "" }
+    ]
+  },
+  "8": {
+    "functionName": "findMax",
+    "description": "Находит максимальное число в массиве.",
+    "tests": [
+      { "input": [1, 2, 3, 4, 5], "expected": 5 },
+      { "input": [-1, -2, -3], "expected": -1 },
+      { "input": [10, 20, 30, 40], "expected": 40 },
+      { "input": [0], "expected": 0 },
+      { "input": [], "expected": null }
+    ]
+  },
+  "9": {
+    "functionName": "flattenArray",
+    "description": "Глубоко развертывает многомерный массив в одномерный.",
+    "tests": [
+      { "input": [1, [2, 3], [[4], 5]], "expected": [1, 2, 3, 4, 5] },
+      { "input": [[1, 2], [3, [4, 5]]], "expected": [1, 2, 3, 4, 5] },
+      { "input": [1, 2, 3], "expected": [1, 2, 3] },
+      { "input": [], "expected": [] }
+    ]
+  },
+
+  "10": {
+    "functionName": "mergeArrays",
+    "description": "Объединяет два отсортированных массива в один отсортированный.",
+    "tests": [
+      { "input": [[1, 3, 5], [2, 4, 6]], "expected": [1, 2, 3, 4, 5, 6] },
+      { "input": [[1, 2], [3, 4]], "expected": [1, 2, 3, 4] },
+      { "input": [[], []], "expected": [] },
+      { "input": [[1, 2, 3], []], "expected": [1, 2, 3] }
+    ]
+  },
+  "11": {
+    "functionName": "sumOfDigits",
+    "description": "Находит сумму цифр заданного числа.",
+    "tests": [
+      { "input": 123, "expected": 6 },
+      { "input": 987, "expected": 24 },
+      { "input": 0, "expected": 0 },
+      { "input": -456, "expected": 15 }
+    ]
+  },
+  "12": {
+    "functionName": "secondLargest",
+    "description": "Находит второе по величине число в массиве.",
+    "tests": [
+      { "input": [1, 2, 3, 4, 5], "expected": 4 },
+      { "input": [5, 5, 5, 5], "expected": null },
+      { "input": [10, 20, 30], "expected": 20 },
+      { "input": [99, 1, 100, 50], "expected": 99 },
+      { "input": [-1, -2, -3], "expected": -2 }
+    ]
+  },
+  "13": {
+    "functionName": "removeWhitespace",
+    "description": "Удаляет все пробелы из строки.",
+    "tests": [
+      { "input": " hello world ", "expected": "helloworld" },
+      { "input": " a b c ", "expected": "abc" },
+      { "input": "", "expected": "" },
+      { "input": "no spaces", "expected": "nospaces" }
+    ]
+  },
+  "14": {
+    "functionName": "countOccurrences",
+    "description": "Считает количество вхождений определенного элемента в массив.",
+    "tests": [
+      { "input": [[1, 2, 3, 1, 1], 1], "expected": 3 },
+      { "input": [["a", "b", "a"], "a"], "expected": 2 },
+      { "input": [[], "x"], "expected": 0 },
+      { "input": [[1, 2, 3], 4], "expected": 0 }
+    ]
+  },
+  "15": {
+    "functionName": "deepClone",
+    "description": "Глубокое клонирование объекта.",
+    "tests": [
+      { "input": { "a": 1, "b": { "c": 2 } }, "expected": { "a": 1, "b": { "c": 2 } } },
+      { "input": [{ "a": 1 }, { "b": 2 }], "expected": [{ "a": 1 }, { "b": 2 }] },
+      { "input": { "x": [1, 2, 3] }, "expected": { "x": [1, 2, 3] } },
+      { "input": null, "expected": null }
+    ]
+  },
+  "16": {
+    "functionName": "isPrime",
+    "description": "Определяет, является ли число простым.",
+    "tests": [
+      { "input": 2, "expected": true },
+      { "input": 3, "expected": true },
+      { "input": 4, "expected": false },
+      { "input": 5, "expected": true },
+      { "input": 9, "expected": false },
+      { "input": 11, "expected": true },
+      { "input": 1, "expected": false },
+      { "input": -3, "expected": false }
+    ]
+  },
+  "17": {
+    "functionName": "factorial",
+    "description": "Вычисляет факториал заданного неотрицательного числа.",
+    "tests": [
+      { "input": 0, "expected": 1 },
+      { "input": 1, "expected": 1 },
+      { "input": 5, "expected": 120 },
+      { "input": 3, "expected": 6 },
+      { "input": 4, "expected": 24 }
+    ]
+  },
+  "18": {
+    "functionName": "fibonacci",
+    "description": "Возвращает n-е число Фибоначчи.",
+    "tests": [
+      { "input": 0, "expected": 0 },
+      { "input": 1, "expected": 1 },
+      { "input": 2, "expected": 1 },
+      { "input": 3, "expected": 2 },
+      { "input": 4, "expected": 3 },
+      { "input": 5, "expected": 5 },
+      { "input": 10, "expected": 55 }
+    ]
+  },
+  "19": {
+    "functionName": "reverseString",
+    "description": "Переворачивает строку.",
+    "tests": [
+      { "input": "hello", "expected": "olleh" },
+      { "input": "world", "expected": "dlrow" },
+      { "input": "", "expected": "" },
+      { "input": "12345", "expected": "54321" }
+    ]
+  },
+  "20": {
+    "functionName": "isAnagram",
+    "description": "Проверяет, являются ли две строки анаграммами друг друга.",
+    "tests": [
+      { "input": ["listen", "silent"], "expected": true },
+      { "input": ["triangle", "integral"], "expected": true },
+      { "input": ["apple", "pale"], "expected": false },
+      { "input": ["aabbcc", "abcabc"], "expected": true }
+    ]
   }
 }

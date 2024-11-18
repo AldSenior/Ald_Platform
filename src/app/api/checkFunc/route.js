@@ -4,21 +4,13 @@ import path from 'path';
 
 export async function POST(request) {
     const { code, id } = await request.json();
+
     // Проверка наличия кода функции и id
     if (!code) {
         return NextResponse.json({ error: 'Необходимо передать код функции.' }, { status: 400 });
     }
     if (!id) {
         return NextResponse.json({ error: 'Необходимо передать ID тестов.' }, { status: 400 });
-    }
-
-    let isEvenFunction;
-
-    try {
-        // Создание функции из кода пользователя
-        isEvenFunction = new Function('num', code + ' return isEven(num);');
-    } catch (error) {
-        return NextResponse.json({ error: 'Ошибка в синтаксисе функции: ' + error.message }, { status: 400 });
     }
 
     // Чтение тестов из tests.json
@@ -29,14 +21,31 @@ export async function POST(request) {
         const fileContents = fs.readFileSync(testsPath, 'utf8');
         const allTests = JSON.parse(fileContents);
         // Получаем тесты по ID
-        testCases = allTests[id] || [];
+        testCases = allTests[id];
     } catch (error) {
         return NextResponse.json({ error: 'Ошибка при чтении файла тестов: ' + error.message }, { status: 500 });
     }
-    const {tests,functionName,description} = testCases
+
+    // Проверка существования и корректности testCases
+    if (!testCases || !Array.isArray(testCases.tests)) {
+        return NextResponse.json({ error: 'Тесты не найдены для указанного ID.' }, { status: 404 });
+    }
+
+    const { tests, functionName, description } = testCases;
+
+    // Используем динамическую функцию, передавая код пользователю
+    let userFunction;
+    try {
+        // Создание пользовательской функции
+        userFunction = new Function('num', code + ' return ' + functionName + '(num);');
+    } catch (error) {
+        return NextResponse.json({ error: 'Ошибка в синтаксисе функции: ' + error.message }, { status: 400 });
+    }
+
     const results = tests.map(({ input, expected }) => {
         try {
-            const output = isEvenFunction(input);
+            // Вызов пользовательской функции с использованием isEven
+            const output = userFunction(input);
             return {
                 input,
                 expected,
@@ -54,6 +63,5 @@ export async function POST(request) {
         }
     });
 
-
-    return NextResponse.json({results,functionName,description});
+    return NextResponse.json({ results, functionName, description });
 }

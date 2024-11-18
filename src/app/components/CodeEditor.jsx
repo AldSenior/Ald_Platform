@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Editor, { useMonaco } from '@monaco-editor/react';
 
-const CodeEditor = ({ id, functionName, description, loading}) => {
+const CodeEditor = ({ id, functionName, description, loading }) => {
     const monaco = useMonaco();
     const [code, setCode] = useState("Ожидайте...");
     const [output, setOutput] = useState("");
@@ -31,6 +31,7 @@ const CodeEditor = ({ id, functionName, description, loading}) => {
         setIsRunning(true);
         if (!code.trim()) { // Проверка на пустоту
             handleLog('Ошибка: Код не может быть пустым');
+            setIsRunning(false); // Обязательно останавливаем выполнение
             return;
         }
 
@@ -47,19 +48,25 @@ const CodeEditor = ({ id, functionName, description, loading}) => {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error || 'Ошибка в серверном ответе');
+                throw new Error(`${errorData.error || 'Ошибка в серверном ответе'}`); // Устранение синтаксической ошибки
             }
 
-            // Обрабатываем результаты
-            const results = await response.json(); // Получаем результаты из ответа
-            results.forEach(({ input, expected, output, passed }) => {
-                const resultMessage = `Входные данные: ${input} | Ожидалось: ${expected} | Получено: ${output} | ${passed ? 'Успех' : 'Неудача'}`;
+            // Обработка ответа от сервера
+            const responseData = await response.json();
+            const { results } = responseData;
+
+            // Логирование результатов
+            results.forEach(({ input, expected, output, passed, error }) => {
+                const resultMessage = `Входные данные: ${input} | Ожидалось: ${expected} | Получено: ${output || 'ошибка'} | ${passed ? 'Успех' : 'Неудача'}`;
                 handleLog(resultMessage);
+                if (error) {
+                    handleLog(`Ошибка: ${error}`);
+                }
             });
         } catch (error) {
             handleLog(`Ошибка: ${error.message}`);
         } finally {
-            setIsRunning(false);
+            setIsRunning(false); // Остановите выполнение, независимо от результата
         }
     };
 
@@ -70,11 +77,10 @@ const CodeEditor = ({ id, functionName, description, loading}) => {
                 defaultLanguage="javascript"
                 value={code}
                 theme="vs-dark"
-                onChange={(value) => setCode(value)}
-                loading={loading}
                 options={{
                     readOnly: loading || !functionName // Делает редактор только для чтения, если загружает или нет functionName
                 }}
+                onChange={(value) => setCode(value)}
             />
             <button onClick={handleRunCode}>Запустить Код</button>
             <pre style={{
