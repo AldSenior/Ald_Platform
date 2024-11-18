@@ -3,12 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import Editor, { useMonaco } from '@monaco-editor/react';
 
-const CodeEditor = ({id,functionName,description}) => {
-      // Получаем ID из параметров маршрута
+const CodeEditor = ({ id, functionName, description, loading}) => {
     const monaco = useMonaco();
-    const [code, setCode] = useState(`// ${description}\nfunction ${functionName}(num) {\n\n}`)
+    const [code, setCode] = useState("Ожидайте...");
     const [output, setOutput] = useState("");
     const [isRunning, setIsRunning] = useState(false);
+
+    useEffect(() => {
+        if (description && functionName) {
+            // Обновляем код при изменении description или functionName
+            setCode(`// ${description}\nfunction ${functionName}(num) {\n\n}`);
+        }
+    }, [description, functionName]);
 
     useEffect(() => {
         if (monaco) {
@@ -21,7 +27,6 @@ const CodeEditor = ({id,functionName,description}) => {
     };
 
     const handleRunCode = async () => {
-
         if (isRunning) return; // Не обрабатывать, если уже выполняется
         setIsRunning(true);
         if (!code.trim()) { // Проверка на пустоту
@@ -37,15 +42,16 @@ const CodeEditor = ({id,functionName,description}) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: { code, id },
+                body: JSON.stringify({ code, id }), // Сериализация объекта в JSON
             });
 
             if (!response.ok) {
-                setOutput('');
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Ошибка в серверном ответе');
             }
-            // Выводим результаты тестов
+
+            // Обрабатываем результаты
+            const results = await response.json(); // Получаем результаты из ответа
             results.forEach(({ input, expected, output, passed }) => {
                 const resultMessage = `Входные данные: ${input} | Ожидалось: ${expected} | Получено: ${output} | ${passed ? 'Успех' : 'Неудача'}`;
                 handleLog(resultMessage);
@@ -61,13 +67,23 @@ const CodeEditor = ({id,functionName,description}) => {
         <div>
             <Editor
                 height="40vh"
-                defaultValue={code}
                 defaultLanguage="javascript"
+                value={code}
                 theme="vs-dark"
                 onChange={(value) => setCode(value)}
+                loading={loading}
+                options={{
+                    readOnly: loading || !functionName // Делает редактор только для чтения, если загружает или нет functionName
+                }}
             />
             <button onClick={handleRunCode}>Запустить Код</button>
-            <pre style={{ whiteSpace: "pre-wrap", backgroundColor: "#f5f5f5", padding: "10px", borderRadius: "5px", marginTop: "10px" }}>
+            <pre style={{
+                whiteSpace: "pre-wrap",
+                backgroundColor: "#f5f5f5",
+                padding: "10px",
+                borderRadius: "5px",
+                marginTop: "10px"
+            }}>
                 {output}
             </pre>
         </div>

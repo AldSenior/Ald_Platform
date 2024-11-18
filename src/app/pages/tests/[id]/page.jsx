@@ -41,9 +41,7 @@ const PageId = () => {
 
     return (
         <div>
-            {loading ? <div>Загрузка...</div> :
-                <CodeEditor id={id} functionName={functionName} description={description}/>
-            }
+            <CodeEditor id={id} loading={loading} functionName={functionName} description={description}/>
         </div>
     );
 };
