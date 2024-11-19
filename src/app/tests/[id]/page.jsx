@@ -1,6 +1,6 @@
 'use client';
 import {useParams} from 'next/navigation';
-import CodeEditor from "../../../components/CodeEditor";
+import CodeEditor from "../../components/CodeEditor";
 import {useState, useEffect} from "react";
 
 const PageId = () => {
@@ -13,18 +13,18 @@ const PageId = () => {
     useEffect(() => {
         const fetchFunctionDetails = async () => {
             try {
-                const response = await fetch(`/api/getFunctionDetails/${id}`); // исправлено
+                const response = await fetch(`/api/getFunctionDetails/${id}`);
 
                 if (!response.ok) {
-                    const errorData = await response.json(); // Извлекаем данные ошибки
-                    throw new Error(errorData.error || 'Не удалось загрузить данные'); // Используем сообщение, если оно существует
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Не удалось загрузить данные');
                 }
 
                 const data = await response.json();
                 setFunctionName(data.functionName);
                 setDescription(data.description);
             } catch (err) {
-                setError(err.message); // Убедитесь, что сообщение об ошибке является строкой
+                setError(err.message);
             } finally {
                 setLoading(false);
             }

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+// Обработчик POST запроса
 export async function POST(request) {
     const { code, id } = await request.json();
 
@@ -33,7 +34,7 @@ export async function POST(request) {
 
     const { tests, functionName, description } = testCases;
 
-    // Используем динамическую функцию, передавая код пользователю
+    // Используем динамическую функцию, передавая код пользователя
     let userFunction;
     try {
         // Создание пользовательской функции
@@ -44,7 +45,6 @@ export async function POST(request) {
 
     const results = tests.map(({ input, expected }) => {
         try {
-            // Вызов пользовательской функции с использованием isEven
             const output = userFunction(input);
             return {
                 input,
@@ -62,6 +62,29 @@ export async function POST(request) {
             };
         }
     });
+
+    // Проверяем, прошли ли все тесты успешно
+    const allTestsPassed = results.every(result => result.passed === true);
+
+    // Обновление статуса задачи в tests.json
+    const tasksPath = path.join(process.cwd(), './src/app/tests.json');
+
+    try {
+        // Читаем файл задач
+        const tasksContents = fs.readFileSync(tasksPath, 'utf8');
+        const allTasks = JSON.parse(tasksContents);
+
+        // Находим задачу по ID
+        const taskToUpdate = allTasks[id]; // Здесь может быть ошибка, если ID не совпадает
+        if (taskToUpdate) {
+            // Если все тесты прошли удачно, помечаем задачу выполненной
+            taskToUpdate.completed = allTestsPassed;
+            // Сохраняем обновленное состояние задач
+            fs.writeFileSync(tasksPath, JSON.stringify(allTasks, null, 2));
+        }
+    } catch (error) {
+        return NextResponse.json({ error: 'Ошибка при обновлении данных задач: ' + error.message }, { status: 500 });
+    }
 
     return NextResponse.json({ results, functionName, description });
 }
