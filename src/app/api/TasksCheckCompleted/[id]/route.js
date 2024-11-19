@@ -11,7 +11,7 @@ export async function PUT(request, { params }) {
     }
 
     // Путь к файлу с данными задач
-    const tasksPath = path.join(process.cwd(), './src/app/tests.json');
+    const tasksPath = path.join(process.cwd(), './src/app/tasks.json');
 
     try {
         // Читаем файл с задачами

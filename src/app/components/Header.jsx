@@ -9,9 +9,11 @@ export const Header = () => {
             </div>
             <nav className="flex space-x-4">
                 <Link href="/lessons" className="hover:underline">Уроки</Link>
-                <Link href="/challenges" className="hover:underline">Задачи</Link>
+                <Link href="/tasks" className="hover:underline">Задачи</Link>
+                <Link href="/lessons" className="hover:underline">Тесты</Link>
                 <Link href="/community" className="hover:underline">Сообщество</Link>
                 <Link href="/profile" className="hover:underline">Профиль</Link>
+
             </nav>
             <div className="flex items-center">
                 <input type="text" placeholder="Поиск..." className="p-2 rounded-lg"/>

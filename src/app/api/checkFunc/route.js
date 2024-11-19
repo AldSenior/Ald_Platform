@@ -14,8 +14,8 @@ export async function POST(request) {
         return NextResponse.json({ error: 'Необходимо передать ID тестов.' }, { status: 400 });
     }
 
-    // Чтение тестов из tests.json
-    const testsPath = path.join(process.cwd(), './src/app/tests.json');
+    // Чтение тестов из tasks.json
+    const testsPath = path.join(process.cwd(), './src/app/tasks.json');
     let testCases;
 
     try {
@@ -66,8 +66,8 @@ export async function POST(request) {
     // Проверяем, прошли ли все тесты успешно
     const allTestsPassed = results.every(result => result.passed === true);
 
-    // Обновление статуса задачи в tests.json
-    const tasksPath = path.join(process.cwd(), './src/app/tests.json');
+    // Обновление статуса задачи в tasks.json
+    const tasksPath = path.join(process.cwd(), './src/app/tasks.json');
 
     try {
         // Читаем файл задач

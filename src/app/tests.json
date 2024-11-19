@@ -2,7 +2,7 @@
   "1": {
     "completed": true,
     "functionName": "isEven",
-    "description": "Определяет, является ли число четным.",
+    "description": "Напиши функцию, которая Определяет, является ли число четным.",
     "difficulty": "easy",
     "tests": [
       {
@@ -38,7 +38,7 @@
   "2": {
     "completed": false,
     "functionName": "isOdd",
-    "description": "Определяет, является ли число нечетным.",
+    "description": "Напиши функцию, которая Определяет, является ли число нечетным.",
     "difficulty": "easy",
     "tests": [
       {
@@ -70,7 +70,7 @@
   "3": {
     "completed": false,
     "functionName": "isPositive",
-    "description": "Проверяет, является ли число положительным.",
+    "description": "Напиши функцию, которая проверяет, является ли число положительным.",
     "difficulty": "medium",
     "tests": [
       {
@@ -98,7 +98,7 @@
   "4": {
     "completed": false,
     "functionName": "countVowels",
-    "description": "Подсчитывает количество гласных букв в строке.",
+    "description": "Напиши функцию, которая Подсчитывает количество гласных букв в строке.",
     "difficulty": "medium",
     "tests": [
       {
@@ -126,7 +126,7 @@
   "5": {
     "completed": false,
     "functionName": "isPalindrome",
-    "description": "Проверяет, является ли строка палиндромом.",
+    "description": "Напиши функцию, которая проверяет, является ли строка палиндромом.",
     "difficulty": "medium",
     "tests": [
       {
@@ -154,7 +154,7 @@
   "6": {
     "completed": false,
     "functionName": "removeDuplicates",
-    "description": "Удаляет дубликаты из массива.",
+    "description": "Напиши функцию, которая удаляет дубликаты из массива.",
     "difficulty": "hard",
     "tests": [
       {
@@ -204,9 +204,9 @@
     ]
   },
   "7": {
-    "completed": false,
+    "completed": true,
     "functionName": "capitalizeFirstLetter",
-    "description": "Превращает первую букву каждого слова в строке в заглавную.",
+    "description": "Напиши функцию, которая превращает первую букву каждого слова в строке в заглавную.",
     "difficulty": "easy",
     "tests": [
       {
@@ -222,15 +222,15 @@
         "expected": "A B C D"
       },
       {
-        "input": "",
-        "expected": ""
+        "input": "a",
+        "expected": "A"
       }
     ]
   },
   "8": {
     "completed": false,
     "functionName": "findMax",
-    "description": "Находит максимальное число в массиве.",
+    "description": "Напиши функцию, которая находит максимальное число в массиве.",
     "difficulty": "medium",
     "tests": [
       {
@@ -275,7 +275,7 @@
   "9": {
     "completed": false,
     "functionName": "flattenArray",
-    "description": "Глубоко развертывает многомерный массив в одномерный.",
+    "description": "Напиши функцию, которая глубоко развертывает многомерный массив в одномерный.",
     "difficulty": "hard",
     "tests": [
       {
@@ -337,6 +337,98 @@
       {
         "input": [],
         "expected": []
+      }
+    ]
+  },
+  "10": {
+    "completed": true,
+    "functionName": "fibonacci",
+    "description": "Напиши функцию, которая возвращает n-е число Фибоначчи.",
+    "difficulty": "medium",
+    "tests": [
+      {
+        "input": 12,
+        "expected": 144
+      },
+      {
+        "input": 1,
+        "expected": 1
+      },
+      {
+        "input": 2,
+        "expected": 1
+      },
+      {
+        "input": 3,
+        "expected": 2
+      },
+      {
+        "input": 7,
+        "expected": 13
+      }
+    ]
+  },
+  "11": {
+    "completed": false,
+    "functionName": "findMax",
+    "description": "Напиши функцию, которая находит максимальное число в массиве.",
+    "difficulty": "easy",
+    "tests": [
+      {
+        "input": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "input": [
+          -1,
+          -2,
+          -3,
+          -4
+        ],
+        "expected": -1
+      },
+      {
+        "input": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "input": [
+          5,
+          5,
+          5
+        ],
+        "expected": 5
+      }
+    ]
+  },
+  "12": {
+    "completed": false,
+    "functionName": "countWords",
+    "description": "Напиши функцию, которая подсчитывает количество слов в строке.",
+    "difficulty": "easy",
+    "tests": [
+      {
+        "input": "Hello world",
+        "expected": 2
+      },
+      {
+        "input": "   Leading and trailing spaces   ",
+        "expected": 4
+      },
+      {
+        "input": "",
+        "expected": 0
+      },
+      {
+        "input": "Oneword",
+        "expected": 1
       }
     ]
   }

@@ -10,7 +10,7 @@ export async  function GET(request, {params}) {
     }
 
     // Путь к файлу с данными функций
-    const functionsPath = path.join(process.cwd(), './src/app/tests.json');
+    const functionsPath = path.join(process.cwd(), './src/app/tasks.json');
 
     try {
         const fileContents = fs.readFileSync(functionsPath, 'utf8');

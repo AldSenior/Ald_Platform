@@ -1,0 +1,193 @@
+[
+    {
+      "id": 1,
+      "title": "Введение в JavaScript",
+      "content": "Основы JavaScript, его синтаксис и работа с переменными.",
+      "questions": [
+        {
+          "question": "Какой оператор используется для объявления переменной в JavaScript?",
+          "options": [
+            "var",
+            "let",
+            "const",
+            "Все вышеперечисленное"
+          ],
+          "correctAnswer": "Все вышеперечисленное"
+        },
+        {
+          "question": "Какой тип данных не существует в JavaScript?",
+          "options": [
+            "String",
+            "Number",
+            "Character",
+            "Boolean"
+          ],
+          "correctAnswer": "Character"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Условные конструкции",
+      "content": "Изучение операторов if, else if и switch.",
+      "questions": [
+        {
+          "question": "Какой результат будет в случае, если x = 10, y = 20 и мы имеем условие \"if (x < y)\"?",
+          "options": [
+            "true",
+            "false",
+            "undefined",
+            "10"
+          ],
+          "correctAnswer": "true"
+        },
+        {
+          "question": "Какой оператор используется для проверки равенства?",
+          "options": [
+            "==",
+            "===",
+            "!=",
+            "Все вышеперечисленное"
+          ],
+          "correctAnswer": "Все вышеперечисленное"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Циклы",
+      "content": "Циклы for и while на JavaScript.",
+      "questions": [
+        {
+          "question": "Какой из следующих циклов гарантированно выполнится хотя бы один раз?",
+          "options": [
+            "for",
+            "while",
+            "do...while",
+            "Ни один из них"
+          ],
+          "correctAnswer": "do...while"
+        },
+        {
+          "question": "Какой вариант корректен для создания цикла на 5 итераций?",
+          "options": [
+            "for (let i = 0; i < 5; i++) {}",
+            "for (i = 0; i < 5; i++) {}",
+            "while (i < 5) {}",
+            "Все вышеперечисленное"
+          ],
+          "correctAnswer": "Все вышеперечисленное"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Функции",
+      "content": "Определение и использование функций, стрелочные функции.",
+      "questions": [
+        {
+          "question": "Как правильно описать функцию в JavaScript?",
+          "options": [
+            "function myFunction() {}",
+            "const myFunction = () => {}",
+            "both a and b",
+            "Невозможно создать функцию"
+          ],
+
+          "correctAnswer": "both a and b"
+        },
+        {
+          "question": "Что вернет следующая функция: const add = (a, b) => a + b; add(5, 10);?",
+          "options": [
+            "15",
+            "510",
+            "undefined",
+            "Ничего"
+          ],
+          "correctAnswer": "15"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Массивы и объекты",
+      "content": "Работа с массивами, методы массивов, объекты.",
+      "questions": [
+        {
+          "question": "Какой метод добавляет элемент в конец массива?",
+          "options": [
+            "pop",
+            "push",
+            "unshift",
+            "shift"
+          ],
+          "correctAnswer": "push"
+        },
+        {
+          "question": "Как создать объект с двумя свойствами name и age?",
+          "options": [
+            "const obj = { name: 'John', age: 30 };",
+            "const obj = new Object(); obj.name = 'John'; obj.age = 30;",
+            "Все вышеперечисленное",
+            "Создать объект невозможно"
+          ],
+          "correctAnswer": "Все вышеперечисленное"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Работа с DOM",
+      "content": "Основы работы с DOM в JavaScript.",
+      "questions": [
+        {
+          "question": "Как получить элемент с ID 'myElement'?",
+          "options": [
+            "document.getElementById('myElement');",
+            "document.querySelector('#myElement');",
+            "Оба варианта",
+            "Невозможно получить элемент"
+          ],
+          "correctAnswer": "Оба варианта"
+        },
+        {
+          "question": "Как установить текст для элемента с ID 'myElement'?",
+          "options": [
+            "document.getElementById('myElement').innerText = 'Hello';",
+            "document.getElementById('myElement').textContent = 'Hello';",
+            "Оба варианта",
+            "Неверно"
+          ],
+          "correctAnswer": "Оба варианта"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Асинхронность и Promises",
+      "content": "Понимание асинхронного JavaScript с использованием Promise и async/await.",
+      "questions": [
+        {
+          "question": "Какой метод используется для обработки успешного результата Promise?",
+          "options": [
+            ".then()",
+            ".catch()",
+            ".finally()",
+            ".resolve()"
+          ],
+          "correctAnswer": ".then()"
+        },
+        {
+          "question": "Какое из следующих утверждений о async/await верно?",
+          "options": [
+            "async всегда возвращает Promise",
+            "await можно использовать только внутри async функции",
+            "Оба утверждения верны",
+            "Оба утверждения неверны"
+          ],
+          "correctAnswer": "Оба утверждения верны"
+        }
+      ]
+
+    }
+    ]
