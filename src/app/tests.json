@@ -36,7 +36,7 @@
     ]
   },
   "2": {
-    "completed": false,
+    "completed": true,
     "functionName": "isOdd",
     "description": "Напиши функцию, которая Определяет, является ли число нечетным.",
     "difficulty": "easy",
@@ -68,7 +68,7 @@
     ]
   },
   "3": {
-    "completed": false,
+    "completed": true,
     "functionName": "isPositive",
     "description": "Напиши функцию, которая проверяет, является ли число положительным.",
     "difficulty": "medium",

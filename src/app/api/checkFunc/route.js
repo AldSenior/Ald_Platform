@@ -15,7 +15,7 @@ export async function POST(request) {
     }
 
     // Чтение тестов из tasks.json
-    const testsPath = path.join(process.cwd(), './src/app/tasks.json');
+    const testsPath = path.join(process.cwd(), './src/app/tests.json');
     let testCases;
 
     try {
@@ -67,7 +67,7 @@ export async function POST(request) {
     const allTestsPassed = results.every(result => result.passed === true);
 
     // Обновление статуса задачи в tasks.json
-    const tasksPath = path.join(process.cwd(), './src/app/tasks.json');
+    const tasksPath = path.join(process.cwd(), './src/app/tests.json');
 
     try {
         // Читаем файл задач
