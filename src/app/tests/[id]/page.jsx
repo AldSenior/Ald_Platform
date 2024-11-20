@@ -1,14 +1,14 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {useParams, useRouter} from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 
 const LessonPage = () => {
     const params = useParams();
-    const {id} = params;
+    const { id } = params;
     const router = useRouter();
 
-    const [lesson, setLesson] = useState(null);
+    const [test, setTest] = useState(null);
     const [selectedOption, setSelectedOption] = useState('');
     const [result, setResult] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -17,10 +17,10 @@ const LessonPage = () => {
 
     useEffect(() => {
         const fetchLesson = async () => {
-            const response = await fetch(`/api/lessons/${id}`);
+            const response = await fetch(`/api/tests/${id}`);
             if (response.ok) {
                 const data = await response.json();
-                setLesson(data);
+                setTest(data);
             } else {
                 console.error('Ошибка при загрузке урока:', response.statusText);
             }
@@ -29,11 +29,11 @@ const LessonPage = () => {
         fetchLesson();
     }, [id]);
 
-    if (!lesson) {
+    if (!test) {
         return <div className="text-center text-red-500">Загрузка урока...</div>;
     }
 
-    const currentQuestion = lesson.questions[currentQuestionIndex];
+    const currentQuestion = test.questions[currentQuestionIndex];
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,7 +47,7 @@ const LessonPage = () => {
     };
 
     const handleNextQuestion = () => {
-        if (currentQuestionIndex < lesson.questions.length) {
+        if (currentQuestionIndex < test.questions.length) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSelectedOption('');
             setResult(null);
@@ -56,14 +56,14 @@ const LessonPage = () => {
     };
 
     const handleGoBackToTests = () => {
-        router.push('/lessons'); // Здесь указываем маршруто на страницу с тестами
+        router.push('/tests');
     };
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
-            {currentQuestionIndex < lesson.questions.length ? (
+            {currentQuestionIndex < test.questions.length ? (
                 <>
-                    <h1 className="text-2xl font-bold text-center text-gray-800">{lesson.title}</h1>
+                    <h1 className="text-2xl font-bold text-center text-gray-800">{test.title}</h1>
                     <h2 className="mt-4 text-lg text-gray-700">{currentQuestion.question}</h2>
                     <form onSubmit={handleSubmit} className="mt-4">
                         {currentQuestion.options.map((option, index) => (
@@ -94,8 +94,8 @@ const LessonPage = () => {
                             <button
                                 type="submit"
                                 className={`px-6 py-2 text-white rounded-md transition duration-150 ease-in-out 
-                                ${isAnswered ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'}`}
-                                disabled={isAnswered}
+                                ${isAnswered || !selectedOption ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'}`}
+                                disabled={isAnswered || !selectedOption}
                             >
                                 Проверить ответ
                             </button>
@@ -124,10 +124,8 @@ const LessonPage = () => {
             ) : (
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-800">Тест завершен!</h1>
-                    <p className="mt-4 text-lg text-gray-700">Вы ответили правильно
-                        на {correctAnswersCount} из {lesson.questions.length} вопросов.</p>
-                    <p className="text-gray-600">
-                        Тест пройден на: {(correctAnswersCount / lesson.questions.length * 100).toFixed(2)}%</p>
+                    <p className="mt-4 text-lg text-gray-700">Вы ответили правильно на {correctAnswersCount} из {test.questions.length} вопросов.</p>
+                    <p className="text-gray-600">Общая ставка: {(correctAnswersCount / test.questions.length * 100).toFixed(2)}%</p>
                     <div className="mt-4 flex justify-center">
                         <button
                             onClick={handleGoBackToTests}

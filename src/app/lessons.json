@@ -110,6 +110,86 @@
           "Все вышеперечисленное"
         ],
         "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Что будет выведено на экран по следующему коду: if (true) { console.log('Hello'); }?",
+        "options": [
+          "Hello",
+          "Nothing",
+          "undefined",
+          "true"
+        ],
+        "correctAnswer": "Hello"
+      },
+      {
+        "question": "Какой результат даст следующий код: x = 5; if (x == '5') { console.log('Equal'); }?",
+        "options": [
+          "'Equal'",
+          "'Not Equal'",
+          "undefined",
+          "'Error'"
+        ],
+        "correctAnswer": "'Equal'"
+      },
+      {
+        "question": "Какой оператор используется для проверки неравенства?",
+        "options": [
+          "!=",
+          "!==",
+          "!==",
+          "Все вышеперечисленное"
+        ],
+        "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Какое ключевое слово используется для создания многоуровневой конструкции if?",
+        "options": [
+          "else",
+          "else if",
+          "switch",
+          "all of the above"
+        ],
+        "correctAnswer": "else if"
+      },
+      {
+        "question": "Какой оператор используется для выбора одного из нескольких значений?",
+        "options": [
+          "if",
+          "switch",
+          "case",
+          "for"
+        ],
+        "correctAnswer": "switch"
+      },
+      {
+        "question": "Что произойдет при выполнении этого кода: let x = 10; if (x > 5) { x = 0; }?",
+        "options": [
+          "0",
+          "10",
+          "5",
+          "undefined"
+        ],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "Что вернет выражение \"false == 0\"?",
+        "options": [
+          "true",
+          "false",
+          "undefined",
+          "Неверно"
+        ],
+        "correctAnswer": "true"
+      },
+      {
+        "question": "Что произойдет, если условие if не выполнится?",
+        "options": [
+          "Оператор else будет выполнен",
+          "Программа выдаст ошибку",
+          "Ничего не произойдет",
+          "Условие проверится снова"
+        ],
+        "correctAnswer": "Оператор else будет выполнен"
       }
     ]
   },
@@ -137,6 +217,86 @@
           "Все вышеперечисленное"
         ],
         "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Что произойдет, если выполнить следующие строки: let i = 0; while (i < 5) { console.log(i); i++; }?",
+        "options": [
+          "Выведет 0, 1, 2, 3, 4",
+          "Ничего не произойдет",
+          "Выдаст ошибку",
+          "Выведет 1, 2, 3, 4, 5"
+        ],
+        "correctAnswer": "Выведет 0, 1, 2, 3, 4"
+      },
+      {
+        "question": "Какой оператор используется для завершения выполнения цикла?",
+        "options": [
+          "exit",
+          "break",
+          "stop",
+          "continue"
+        ],
+        "correctAnswer": "break"
+      },
+      {
+        "question": "Какой из следующих циклов выполняется на основе условия и может не выполниться ни разу?",
+        "options": [
+          "for",
+          "while",
+          "do...while",
+          "Все вышеперечисленное"
+        ],
+        "correctAnswer": "while"
+      },
+      {
+        "question": "Как можно избежать бесконечного цикла?",
+        "options": [
+          "Добавив правильное условие выхода",
+          "Используя break",
+          "Оба вышеуказанных варианта",
+          "Изменяя значение переменной в цикле"
+        ],
+        "correctAnswer": "Оба вышеуказанных варианта"
+      },
+      {
+        "question": "Как можно пропустить текущую итерацию цикла?",
+        "options": [
+          "continue",
+          "break",
+          "skip",
+          "next"
+        ],
+        "correctAnswer": "continue"
+      },
+      {
+        "question": "Какой из этих циклов выполнится 0 раз?",
+        "options": [
+          "for (let i = 0; i < 0; i++) {}",
+          "while (false) {}",
+          "do { } while (false);",
+          "Все вышеперечисленное"
+        ],
+        "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Что выполнится в цикле for, если не указать условие завершения?",
+        "options": [
+          "Цикл завершится без выполнения.",
+          "Цикл выполнится бесконечно.",
+          "Произойдет ошибка.",
+          "Цикл выполнится 0 раз."
+        ],
+        "correctAnswer": "Цикл выполнится бесконечно."
+      },
+      {
+        "question": "Какой будет результат выполнения следующего кода: for (let i = 0; i < 5; i++) { if (i === 3) break; console.log(i); }?",
+        "options": [
+          "0, 1, 2",
+          "0, 1, 2, 3",
+          "0, 1, 2, 3, 4",
+          "0, 1, 2, 3, 4, 5"
+        ],
+        "correctAnswer": "0, 1, 2"
       }
     ]
   },
@@ -164,6 +324,76 @@
           "Ничего"
         ],
         "correctAnswer": "15"
+      },
+      {
+        "question": "Что происходит при вызове функции, если в ней не указано ключевое слово return?",
+        "options": [
+          "Возвращает null",
+          "Возвращает undefined",
+          "Возвращает 0",
+          "Выдаст ошибку"
+        ],
+        "correctAnswer": "Возвращает undefined"
+      },
+      {
+        "question": "Как можно передать функции несколько аргументов?",
+        "options": [
+          "const myFunction = (a, b) => {}",
+          "myFunction(a, b)",
+          "both a and b",
+          "Невозможно передать несколько аргументов"
+        ],
+        "correctAnswer": "both a and b"
+      },
+      {
+        "question": "Что такое замыкание в JavaScript?",
+        "options": [
+          "Функция, которая вызывает сама себя",
+          "Функция, которая 'запоминает' окружение",
+          "Функция без параметров",
+          "Функция в объекте"
+        ],
+        "correctAnswer": "Функция, которая 'запоминает' окружение"
+      },
+      {
+        "question": "Что выведет следующий код: console.log(typeof myFunction); где myFunction определена как function myFunction() {}?",
+        "options": [
+          "function",
+          "object",
+          "undefined",
+          "Ничего"
+        ],
+        "correctAnswer": "function"
+      },
+      {
+        "question": "Что такое стрелочные функции?",
+        "options": [
+          "Краткая запись функции",
+          "Функции, которые всегда возвращают значение",
+          "Функции, которые не имеют своего контекста this",
+          "Все вышеуказанные"
+        ],
+        "correctAnswer": "Все вышеуказанные"
+      },
+      {
+        "question": "Как вызвать функцию с параметрами по умолчанию?",
+        "options": [
+          "function myFunction(a = 1) {}",
+          "const myFunction = (a = 1) => {}",
+          "Оба варианта",
+          "Невозможно установить параметры по умолчанию"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Что произойдет, если вызвать функцию без указания необходимых аргументов?",
+        "options": [
+          "В функции будут использованы значения undefined",
+          "Будет выдана ошибка",
+          "Ничего не произойдет",
+          "Функция автоматически завершится"
+        ],
+        "correctAnswer": "В функции будут использованы значения undefined"
       }
     ]
   },
@@ -191,6 +421,76 @@
           "Создать объект невозможно"
         ],
         "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Какой метод удаляет последний элемент массива?",
+        "options": [
+          "pop",
+          "shift",
+          "push",
+          "unshift"
+        ],
+        "correctAnswer": "pop"
+      },
+      {
+        "question": "Какое свойство объекта позволяет получить массив его ключей?",
+        "options": [
+          "Object.keys()",
+          "Object.values()",
+          "Object.entries()",
+          "Все вышеперечисленное"
+        ],
+        "correctAnswer": "Object.keys()"
+      },
+      {
+        "question": "Как создать массив из 5 элементов равных нулю?",
+        "options": [
+          "const arr = [0, 0, 0, 0, 0];",
+          "const arr = new Array(5).fill(0);",
+          "Все вышеперечисленное",
+          "Создать массив невозможно"
+        ],
+        "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Какой метод объединяет два массива?",
+        "options": [
+          "concat",
+          "push",
+          "join",
+          "merge"
+        ],
+        "correctAnswer": "concat"
+      },
+      {
+        "question": "Какой метод возвращает первый элемент массива?",
+        "options": [
+          "shift",
+          "pop",
+          "unshift",
+          "slice"
+        ],
+        "correctAnswer": "shift"
+      },
+      {
+        "question": "Что произойдет, если вызвать метод pop на пустом массиве?",
+        "options": [
+          "Убедит в undefined",
+          "Создаст ошибку",
+          "Ничего не произойдет",
+          "Вернет 0"
+        ],
+        "correctAnswer": "Убедит в undefined"
+      },
+      {
+        "question": "Как можно перебрать все свойства объекта?",
+        "options": [
+          "for...in",
+          "forEach",
+          "for...of",
+          "map"
+        ],
+        "correctAnswer": "for...in"
       }
     ]
   },
@@ -216,6 +516,76 @@
           "document.getElementById('myElement').textContent = 'Hello';",
           "Оба варианта",
           "Неверно"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как добавить новый элемент в DOM?",
+        "options": [
+          "element.appendChild(newElement);",
+          "document.createElement('element');",
+          "Оба варианта",
+          "Невозможно добавить элемент"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как удалить элемент с ID 'myElement'?",
+        "options": [
+          "document.getElementById('myElement').remove();",
+          "document.body.removeChild(document.getElementById('myElement'));",
+          "Оба варианта",
+          "Невозможно удалить элемент"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как изменить атрибут элемента?",
+        "options": [
+          "element.setAttribute('attr', 'value');",
+          "element.attr = 'value';",
+          "Оба варианта",
+          "Невозможно изменить атрибут"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как получить все элементы с классом 'myClass'?",
+        "options": [
+          "document.getElementsByClassName('myClass');",
+          "document.querySelectorAll('.myClass');",
+          "Оба варианта",
+          "Невозможно получить элементы по классу"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как добавить обработчик события к элементу?",
+        "options": [
+          "element.addEventListener('click', function);",
+          "element.onclick = function;",
+          "Оба варианта",
+          "Невозможно добавить обработчик события"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как получить родительский элемент?",
+        "options": [
+          "element.parentNode;",
+          "element.parentElement;",
+          "Оба варианта",
+          "Невозможно получить родительский элемент"
+        ],
+        "correctAnswer": "Оба варианта"
+      },
+      {
+        "question": "Как можно изменить стиль элемента на JavaScript?",
+        "options": [
+          "element.style.property = 'value';",
+          "element.className = 'class';",
+          "Оба варианта",
+          "Невозможно изменить стиль элемента"
         ],
         "correctAnswer": "Оба варианта"
       }
@@ -245,6 +615,367 @@
           "Оба утверждения неверны"
         ],
         "correctAnswer": "Оба утверждения верны"
+      },
+      {
+        "question": "Какой метод используется для обработки ошибки Promise?",
+        "options": [
+          ".then()",
+          ".catch()",
+          ".finally()",
+          ".reject()"
+        ],
+        "correctAnswer": ".catch()"
+      },
+      {
+        "question": "Что произойдет, если вызвать reject на Promise?",
+        "options": [
+          "Promise будет выполнен",
+          "Promise перейдет в состояние rejected",
+          "Promise перейдет в состояние fulfilled",
+          "Ничего не произойдет"
+        ],
+        "correctAnswer": "Promise перейдет в состояние rejected"
+      },
+      {
+        "question": "Что вернет обещание, если Promise разрешается?",
+        "options": [
+          "Состояние fulfilled",
+          "Состояние rejected",
+          "Состояние pending",
+          "none of the above"
+        ],
+        "correctAnswer": "Состояние fulfilled"
+      },
+      {
+        "question": "Как создать новый Promise?",
+        "options": [
+          "const myPromise = new Promise((resolve, reject) => {});",
+          "const myPromise = Promise((resolve, reject) => {});",
+          "Все вышеперечисленное",
+          "Невозможно создать Promise"
+        ],
+        "correctAnswer": "const myPromise = new Promise((resolve, reject) => {});"
+      },
+      {
+        "question": "Что произойдет, если вызвать await перед Promise?",
+        "options": [
+          "Функция остановится до получения результата",
+          "Promise вернёт значение сразу",
+          "Ничего не произойдет",
+          "Функция завершит выполнение"
+        ],
+        "correctAnswer": "Функция остановится до получения результата"
+      },
+      {
+        "question": "Как совместить несколько Promises?",
+        "options": [
+          "Promise.all()",
+          "Promise.race()",
+          "Promise.allSettled()",
+          "Все вышеперечисленное"
+        ],
+        "correctAnswer": "Все вышеперечисленное"
+      },
+      {
+        "question": "Как обрабатывать результаты нескольких Promises последовательно?",
+        "options": [
+          "Вложенные .then()",
+          ".all() метод",
+          "async/await конструкции",
+          "Невозможно обрабатывать последовательно"
+        ],
+        "correctAnswer": "async/await конструкции"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Замыкания и функции высшего порядка",
+    "content": "Понимание замыканий и функций высшего порядка в JavaScript.",
+    "questions": [
+      {
+        "question": "Что такое замыкание в JavaScript?",
+        "options": [
+          "Это функция, которая возвращает другую функцию с доступом к своему окружению.",
+          "Это функция, которая не принимает параметры.",
+          "Это ошибка в работе с функцией.",
+          "Это концепция, которая не используется в JavaScript."
+        ],
+        "correctAnswer": "Это функция, которая возвращает другую функцию с доступом к своему окружению."
+      },
+      {
+        "question": "Каково назначение функции высшего порядка?",
+        "options": [
+          "Возвращать другую функцию.",
+          "Принимать функцию в качестве аргумента.",
+          "Обе вышеописанные задачи.",
+          "Ни одно из вышеупомянутого."
+        ],
+        "correctAnswer": "Обе вышеописанные задачи."
+      },
+      {
+        "question": "Как создать замыкание ?",
+        "options": [
+          "Функция внутри другой функции.",
+          "Использовать ключевое слово 'let'.",
+          "Работая с асинхронными функциями.",
+          "Невозможно создать замыкание."
+        ],
+        "correctAnswer": "Функция внутри другой функции."
+      },
+      {
+        "question": "Какой метод используется, чтобы добавить функцию к каждому элементу массива?",
+        "options": [
+          ".forEach()",
+          ".map()",
+          ".filter()",
+          ".reduce()"
+        ],
+        "correctAnswer": ".forEach()"
+      },
+      {
+        "question": "Что вернет вызов функции, использующей замыкание?",
+        "options": [
+          "Доступ к переменной из внешней функции",
+          "Ошибка выполнения",
+          "Непредсказуемый результат",
+          "Ничего"
+        ],
+        "correctAnswer": "Доступ к переменной из внешней функции"
+      },
+      {
+        "question": "Где могут быть определены функции высшего порядка?",
+        "options": [
+          "Только глобально",
+          "Только внутри других функций",
+          "Везде, в том числе как свойства объектов",
+          "Только в модулях ES6"
+        ],
+        "correctAnswer": "Везде, в том числе как свойства объектов"
+      },
+      {
+        "question": "Какая из следующих конструкций является примером замыкания?",
+        "options": [
+          "function outer() { function inner() { return outerVariable; } }",
+          "function outer() { var outerVariable = 1; return function inner() { return outerVariable; }; }",
+          "function outer(outerVariable) { return function inner() { return outerVariable; }; }",
+          "Обе последние опции"
+        ],
+        "correctAnswer": "Обе последние опции"
+      },
+      {
+        "question": "Какой из следующих методов массива создает новый массив, применяя функцию к каждому элементу?",
+        "options": [
+          ".map()",
+          ".filter()",
+          ".reduce()",
+          ".forEach()"
+        ],
+        "correctAnswer": ".map()"
+      },
+      {
+        "question": "Какое значение возвращает функция, если у нее нет return?",
+        "options": [
+          "undefined",
+          "null",
+          "0",
+          "Ничего"
+        ],
+        "correctAnswer": "undefined"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Контекст выполнения и `this`",
+    "content": "Понимание контекста выполнения и ключевого слова `this` в JavaScript.",
+    "questions": [
+      {
+        "question": "Что такое `this` в JavaScript?",
+        "options": [
+          "Ключевое слово, которое ссылается на текущий объект.",
+          "Контекст, в котором была вызвана функция.",
+          "Ссылка на глобальный объект.",
+          "Все вышеуказанное."
+        ],
+        "correctAnswer": "Все вышеуказанное."
+      },
+      {
+        "question": "Какой метод позволяет установить контекст функции?",
+        "options": [
+          ".bind()",
+          ".call()",
+          ".apply()",
+          "Все вышеупомянутые варианты"
+        ],
+        "correctAnswer": "Все вышеупомянутые варианты"
+      },
+      {
+        "question": "Какое значение `this` внутри обычной функции в строгом режиме?",
+        "options": [
+          "undefined",
+          "Object",
+          "Глобальный объект",
+          "null"
+        ],
+        "correctAnswer": "undefined"
+      },
+      {
+        "question": "Как позволит выделить `this` внутри объекта?",
+        "options": [
+          "Использовать стрелочную функцию.",
+          "Ничего не получится.",
+          "Использовать .bind();",
+          "Вложить функцию в объект."
+        ],
+        "correctAnswer": "Использовать стрелочную функцию."
+      },
+      {
+        "question": "Что произойдет, если вызвать функцию без контекста?",
+        "options": [
+          "`, this` будет равен глобальному объекту (window в браузере).",
+          "`, this` будет равен undefined.",
+          "Функция выполнится с ошибкой.",
+          "Ничего не произойдет."
+        ],
+        "correctAnswer": "`, this` будет равен глобальному объекту (window в браузере)."
+      },
+      {
+        "question": "Что произойдет, если вызвать метод через объект, но без явно заданного контекста?",
+        "options": [
+          "Ключевое слово `this` потеряется.",
+          "`this` будет ссылаться на объект.",
+          "`this` будет равен undefined.",
+          "Ключевое слово `this` будет ссылаться на глобальный объект."
+        ],
+        "correctAnswer": "`this` будет ссылаться на объект."
+      },
+      {
+        "question": "Какой контекст будет у функции, переданной в метод `setTimeout`?",
+        "options": [
+          "Глобальный объект",
+          "null",
+          "undefined",
+          "Объект, к которому применяется метод"
+        ],
+        "correctAnswer": "Глобальный объект"
+      },
+      {
+        "question": "Что такое метод `apply()`?",
+        "options": [
+          "Метод для вызова функции с заданным значением `this` и массивом аргументов.",
+          "Метод для вызова функции в контексте объекта.",
+          "Метод для определения контекста функции.",
+          "Ничего из вышеперечисленного."
+        ],
+        "correctAnswer": "Метод для вызова функции с заданным значением `this` и массивом аргументов."
+      },
+      {
+        "question": "Как можно сохранить контекст внутри функции?",
+        "options": [
+          "Поле объекта.",
+          "Паттерн `self = this`.",
+          "Использование стрелочной функции.",
+          "Все вышеперечисленное."
+        ],
+        "correctAnswer": "Все вышеперечисленное."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Модули и системы сборки",
+    "content": "Понимание модульной структуры и системы сборки в JavaScript.",
+    "questions": [
+      {
+        "question": "Как импортировать по умолчанию модуль в ES6?",
+        "options": [
+          "import module from './module.js';",
+          "import { module } from './module.js';",
+          "require('./module.js');",
+          "include './module.js';"
+        ],
+        "correctAnswer": "import module from './module.js';"
+      },
+      {
+        "question": "Какой оператор используется для экспорта именованного модуля?",
+        "options": [
+          "export default;",
+          "export;",
+          "module.exports;",
+          "exports."
+        ],
+        "correctAnswer": "export;"
+      },
+      {
+        "question": "Что возвращает функция `require()`?",
+        "options": [
+          "Модуль",
+          "Путь к модулю",
+          "Export объекта.",
+          "Ничего."
+        ],
+        "correctAnswer": "Модуль"
+      },
+      {
+        "question": "Какова основная функция системы сборки Webpack?",
+        "options": [
+          "Объединение модулей в один файл.",
+          "Расширение синтаксиса JavaScript.",
+          "Минификация кода.",
+          "Управление версиями кода."
+        ],
+        "correctAnswer": "Объединение модулей в один файл."
+      },
+      {
+        "question": "Какую конфигурацию использует Babel?",
+        "options": [
+          "JSON-файл.",
+          "JavaScript-файл.",
+          "Photo-файл.",
+          "Babel не требует конфигурации."
+        ],
+        "correctAnswer": "JSON-файл."
+      },
+      {
+        "question": "Какой метод используется для импорта нескольких экспортов из модуля?",
+        "options": [
+          "import * as module from './module.js';",
+          "import { one, two } from './module.js';",
+          "import { default } from './module.js';",
+          "require('./module.js');"
+        ],
+        "correctAnswer": "import * as module from './module.js';"
+      },
+      {
+        "question": "Что такое CommonJS?",
+        "options": [
+          "Стандарт для модульной системы JavaScript.",
+          "Стандарт API для браузеров.",
+          "Стандарт для работы с CSS.",
+          "Ничего из вышеупомянутого."
+        ],
+        "correctAnswer": "Стандарт для модульной системы JavaScript."
+      },
+      {
+        "question": "Какой атрибут необходимо добавить в тег <script> для использования модуля?",
+        "options": [
+          "type='module'",
+          "type='text/javascript'",
+          "type='text/ecmascript'",
+          "data-module='true'"
+        ],
+        "correctAnswer": "type='module'"
+      },
+      {
+        "question": "Какую директиву используют для экспорта по умолчанию?",
+        "options": [
+          "export default;",
+          "export;",
+          "default;",
+          "exports."
+        ],
+        "correctAnswer": "export default;"
       }
     ]
   }
