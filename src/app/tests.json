@@ -1,6 +1,6 @@
 {
   "1": {
-    "completed": false,
+    "completed": true,
     "functionName": "isEven",
     "description": "Напиши функцию, которая Определяет, является ли число четным.",
     "difficulty": "easy",
