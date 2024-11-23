@@ -4,7 +4,7 @@ import path from 'path'
 
 export async function GET(req, { params }) {
     const { id } = params
-    const lessonsPath = path.join(process.cwd(), './src/app/quiz.json')
+    const lessonsPath = path.join(process.cwd(), './src/app/tests.json')
     let lessonsData
 
     try {

@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import {useEffect, useState} from 'react';
-import {useParams, useRouter} from 'next/navigation';
-import useQuizManager from '../../{hooks}/useQuizManager';
+import { useParams, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import useQuizManager from '../../{hooks}/useQuizManager'
 
 const TestPage = () => {
-    const params = useParams();
-    const {id} = params;
-    const router = useRouter();
+    const params = useParams()
+    const { id } = params
+    const router = useRouter()
 
-    const [test, setTest] = useState(null);
-    const [selectedOptionIndex, setSelectedOptionIndex] = useState(null); // Индекс выбранного варианта
-    const [result, setResult] = useState(null);
-    const [isAnswered, setIsAnswered] = useState(false);
-    const [isSelectionLocked, setIsSelectionLocked] = useState(false); // Флаг для блокировки выбора
+    const [test, setTest] = useState(null)
+    const [selectedOptionIndex, setSelectedOptionIndex] = useState(null)
+    const [result, setResult] = useState(null)
+    const [isAnswered, setIsAnswered] = useState(false)
+    const [isSelectionLocked, setIsSelectionLocked] = useState(false)
 
     const {
         currentQuestion,
@@ -23,43 +23,43 @@ const TestPage = () => {
         getScore,
         resetQuiz,
         setQuizManager
-    } = useQuizManager([]);
+    } = useQuizManager([])
 
     useEffect(() => {
         const fetchLesson = async () => {
-            const response = await fetch(`/api/tests/${id}`);
+            const response = await fetch(`/api/tests/${id}`)
             if (response.ok) {
-                const data = await response.json();
-                setTest(data);
-                setQuizManager(data.questions); // Устанавливаем вопросы
-                resetQuiz(); // Сбрасываем состояние викторины
+                const data = await response.json()
+                setTest(data)
+                setQuizManager(data.questions) // Устанавливаем вопросы
+                resetQuiz() // Сбрасываем состояние викторины
             } else {
-                console.error('Ошибка при загрузке урока:', response.statusText);
+                console.error('Ошибка при загрузке урока:', response.statusText)
             }
-        };
+        }
 
-        fetchLesson();
-    }, [id]);
+        fetchLesson()
+    }, [id])
 
     if (!test) {
-        return <div className="text-center text-red-500">Загрузка урока...</div>;
+        return <div className="text-center text-red-500">Загрузка урока...</div>
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const {isCorrect, correctAnswer} = submitAnswer(currentQuestion.options[selectedOptionIndex]);
-        setResult(isCorrect ? 'Правильно!' : `Неправильно! Правильный ответ: ${correctAnswer}`);
-        setIsAnswered(true);
-        setIsSelectionLocked(true); // Блокируем изменение выбора после проверки
-    };
+        e.preventDefault()
+        const { isCorrect, correctAnswer } = submitAnswer(currentQuestion.options[selectedOptionIndex])
+        setResult(isCorrect ? 'Правильно!' : `Неправильно! Правильный ответ: ${correctAnswer}`)
+        setIsAnswered(true)
+        setIsSelectionLocked(true) // Блокируем изменение выбора после проверки
+    }
 
     const handleNextQuestion = () => {
-        nextQuestion();
-        setSelectedOptionIndex(null);
-        setResult(null);
-        setIsAnswered(false);
-        setIsSelectionLocked(false); // Сбрасываем блокировку при переходе к следующему вопросу
-    };
+        nextQuestion()
+        setSelectedOptionIndex(null)
+        setResult(null)
+        setIsAnswered(false)
+        setIsSelectionLocked(false) // Сбрасываем блокировку при переходе к следующему вопросу
+    }
 
     return (
         <div className="max-w-lg mx-auto p-6 bg-gray-800 rounded-lg shadow-lg my-10">
@@ -122,7 +122,7 @@ const TestPage = () => {
                 </div>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default TestPage;
+export default TestPage

@@ -1,37 +1,39 @@
 'use client'
-import { useEffect, useState } from 'react';
-import Test from '../components/Test';
+import { useEffect, useState } from 'react'
+import Test from '../components/Test'
 
-const HomePage = () => {
-    const [testData, setTestData] = useState([]);
+const QuizPage = () => {
+    const [testData, setTestData] = useState([])
 
     useEffect(() => {
-        const fetchtest = async () => {
-            const response = await fetch('/api/tests');
+        const fetchTest = async () => {
+            const response = await fetch('/api/tests')
             if (!response.ok) {
-                throw new Error('Ошибка при загрузке уроков');
+                throw new Error('Ошибка при загрузке уроков')
             }
-            const data = await response.json();
-            setTestData(data);
-        };
+            const data = await response.json()
+            setTestData(data)
+        }
 
-        fetchtest().catch(err => {
-            console.error(err); // Логируем ошибку в консоль
-        });
-    }, []);
+        fetchTest().catch(err => {
+            console.error(err)
+        })
+    }, [])
 
     return (
-        <div className="max-w-2xl mx-auto pt-10">
-            <h1 className="text-3xl font-bold text-center mb-6">Тесты по JavaScript</h1>
+        <div className="max-w-7xl mx-auto flex flex-col justify-center pt-10">
+            <h1 className="text-4xl font-bold text-center mb-8 text-white">Тесты по JavaScript</h1>
             {testData.length > 0 ? (
-                testData.map((lesson) => (
-                    <Test test={lesson} key={lesson.id} />
-                ))
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {testData.map((lesson) => (
+                        <Test test={lesson} key={lesson.id} />
+                    ))}
+                </div>
             ) : (
                 <p className="text-center text-gray-500">Загрузка тестов...</p>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default HomePage;
+export default QuizPage

@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export const Header = () => {
     return (
-        <header className="flex justify-between items-center p-4 bg-gray-900 text-white shadow-md">
+        <header className="flex w-full justify-between items-center p-4 bg-gray-900 text-white shadow-md">
             <div className="text-3xl font-bold">
                 <Link href="/">MyCodingSite</Link>
             </div>
@@ -34,5 +34,8 @@ export const Header = () => {
                 </button>
             </div>
         </header>
-    );
-};
+    )
+}
+
+
+export default Header

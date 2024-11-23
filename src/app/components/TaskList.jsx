@@ -1,55 +1,74 @@
-import Link from "next/link";
+import Link from "next/link"
+import { useEffect, useState } from "react"
 
-const TaskCard = ({ title, description, difficulty, onClick, id, completed }) => {
+const TaskCard = ({ title, description, completed, difficulty, id }) => {
+    const colorMap = {
+        easy: 'bg-green-500',
+        medium: 'bg-yellow-500',
+        hard: 'bg-red-500'
+    }
+
     return (
-        <div
-            className="relative w-1/4 bg-[#121212] shadow-md rounded-lg p-4 m-2 hover:shadow-lg hover:scale-105 transition-transform duration-200 flex flex-col justify-between"
-            onClick={onClick}
-        >
-            <div>
-                <h3 className="text-lg font-semibold text-center mt-6">{title}</h3>
-                <p className="text-gray-400 min-h-[72px]">{description}</p> {/* Используем min-h для описания */}
-            </div>
-            <div className="mt-2">
-                <p className={`text-sm ${completed ? 'text-green-500' : 'text-red-500'}`}>
-                    {completed ? "Выполнено" : "Не выполнено"}
-                </p>
-                <Link href={`/tasks/${id}`}>
-                    <button className="w-full inline-block text-center px-2 py-1 text-sm text-white rounded bg-black hover:bg-gray-800 transition-colors duration-200">
-                        <p className="text-center">Начать</p>
-                    </button>
-                </Link>
-            </div>
-
-            <span
-                className={`absolute top-2 right-2 px-2 py-1 text-sm text-white rounded ${difficulty === 'easy' ? 'bg-green-500' : difficulty === 'medium' ? 'bg-yellow-500' : 'bg-red-500'}`}>
+        <div className="relative w-full max-w-sm h-72 mx-auto bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+            <div className={`absolute top-4 right-4 text-sm text-white font-semibold py-1 px-2 rounded ${colorMap[difficulty]}`}>
                 {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
-            </span>
+            </div>
+            <div className="flex-1 flex flex-col p-6">
+                <h2 className="text-xl font-semibold text-gray-200 mb-2">{title}</h2>
+                <p className="text-base text-gray-400 mb-4 flex-grow overflow-y-auto">{description}</p>
+                <span className={`text-sm font-semibold py-1 px-2 rounded ${completed ? 'bg-green-600 text-white' : 'bg-red-600 text-white'} mb-4`}>
+                    {completed ? '✅ Выполнено' : '❌ Не выполнено'}
+                </span>
+            </div>
+            <Link href={`/tasks/${id}`}>
+                <div className="px-4 py-2 text-sm text-white bg-blue-600 rounded-b-lg hover:bg-blue-700 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 text-center">
+                    Начать
+                </div>
+            </Link>
         </div>
-    );
-};
-
-import tasks from "../tests.json";
+    )
+}
 
 const TaskList = () => {
+    const [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+            const response = await fetch('/api/tasks')
+            if (!response.ok) {
+                throw new Error('Ошибка при загрузке тестов')
+            }
+            const data = await response.json()
+            setTasks(Object.entries(data).map(([key, value]) => ({ id: key, ...value })))
+        }
+
+        fetchTasks().catch(err => {
+            console.error(err)
+        })
+    }, [])
+
+
     return (
-        <div className="max-w-4xl mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4 text-center">Задачи по JavaScript</h1>
-            <div className="flex flex-wrap">
-                {Object.entries(tasks).map(([key, task]) => (
-                    <TaskCard
-                        key={key}
-                        title={task.functionName}
-                        description={task.description}
-                        difficulty={task.difficulty} // Передаем уровень сложности
-                        id={key}
-                        completed={task.completed}
-                    />
-                ))}
+        <div className="w-1/2 mx-auto pt-10">
+            <h1 className="text-3xl font-bold text-white text-center mb-6">Задачи по JavaScript</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {tasks.length > 0 ? (
+
+                    tasks.map((task, id) => (
+                        <TaskCard
+                            key={id}
+                            title={task.functionName}
+                            description={task.description}
+                            difficulty={task.difficulty}
+                            id={task.id}
+                            completed={task.completed}
+                        />
+                    ))
+
+                ) : (<p className="text-center text-gray-500">Загрузка задач...</p>)}
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default TaskList;
-
+export default TaskList
