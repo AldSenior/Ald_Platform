@@ -9,7 +9,7 @@ const TaskCard = ({ title, description, completed, difficulty, id }) => {
     }
 
     return (
-        <div className="relative w-full max-w-sm h-72 mx-auto bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
+        <div className="relative w-full max-w-sm h-80 mx-auto bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col">
             <div className={`absolute top-4 right-4 text-sm text-white font-semibold py-1 px-2 rounded ${colorMap[difficulty]}`}>
                 {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
             </div>

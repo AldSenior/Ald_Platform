@@ -1,9 +1,9 @@
-import Editor from '@monaco-editor/react'
-import React, { useEffect, useState } from 'react'
-import ReactConfetti from 'react-confetti'
-import useCodeRunner from '../{hooks}/useCodeRunner' // Путь до вашего хука
+import Editor from '@monaco-editor/react';
+import React, {useEffect, useState} from 'react';
+import ReactConfetti from 'react-confetti';
+import useCodeRunner from '../{hooks}/useCodeRunner'; // Укажите путь к вашему хуку
 
-const CodeEditor = ({ id, functionName, description }) => {
+const CodeEditor = ({id, functionName, description}) => {
     const {
         output,
         isRunning,
@@ -11,61 +11,67 @@ const CodeEditor = ({ id, functionName, description }) => {
         runCode,
         logResults,
         checkIfAllTestsPassed,
-    } = useCodeRunner(id)
+    } = useCodeRunner(id);
 
-    const [code, setCode] = useState("Ожидайте...")
-    const [dataLoaded, setDataLoaded] = useState(false)
-
+    const [code, setCode] = useState('// Ожидайте...');
+    const [dataLoaded, setDataLoaded] = useState(false);
     useEffect(() => {
         if (description && functionName) {
-            setCode(`// ${description}\nfunction ${functionName}(num) {\n\n}`) // Исправлено на шаблонную строку
-            setDataLoaded(true)
+            setCode(`function ${functionName}(num) {\n\n}`);
+            setDataLoaded(true);
         }
-    }, [description, functionName])
+    }, [description, functionName]);
 
     const handleRunCode = async () => {
-        const results = await runCode(code)
+        const results = await runCode(code);
         if (results.success) {
-            checkIfAllTestsPassed(results.results)
-            logResults(results.results)
+            checkIfAllTestsPassed(results.results);
+            logResults(results.results);
         } else {
-            console.error("Ошибка выполнения кода.")
+            console.error("Ошибка выполнения кода.");
         }
-    }
+    };
 
     return (
-        <div className="flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
-            {isAllTestsPassed && <ReactConfetti />}
-            <Editor
-                value={code}
-                onChange={(value) => setCode(value)}
-                height="500px"
-                width="80vw"
-                language="javascript"
-                theme="vs-dark"
-                options={{
-                    readOnly: !dataLoaded,
-                }}
-            />
-            <div className="my-4">
-                <button
-                    onClick={handleRunCode}
-                    disabled={isRunning}
-                    className={`px-4 py-2 rounded transition-colors duration-300 
-                                ${isRunning ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-500'} 
-                                text-white`}
-                >
-                    {isRunning ? 'Запуск...' : 'Запустить код'}
-                </button>
-            </div>
-            <div className="w-full mt-4">
-                <h3 className="text-lg font-semibold mb-2">Результаты:</h3>
-                <div className="bg-gray-700 p-4 rounded overflow-y-auto" style={{ maxHeight: '200px' }}>
-                    <pre>{output}</pre>
+        <div className="flex h-screen">
+            {/* Контент с редактором */}
+            <div className="flex-1 bg-gray-900 text-white flex flex-col p-6">
+                {isAllTestsPassed && <ReactConfetti/>}
+
+
+                    <Editor
+                        value={code}
+                        onChange={(value) => setCode(value)}
+                        height="50%"
+                        width="100%"
+                        language="javascript"
+                        theme="vs-dark"
+                        options={{
+                            readOnly: !dataLoaded,
+                        }}
+                    />
+
+                <div className="my-4">
+                    <button
+                        onClick={handleRunCode}
+                        disabled={isRunning}
+                        className={`px-4 py-2 rounded transition-colors duration-300 
+                                    ${isRunning ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-500'} 
+                                    text-white`}
+                    >
+                        {isRunning ? 'Запуск...' : 'Запустить код'}
+                    </button>
+                </div>
+
+                <div className="w-full mt-4">
+                    <h3 className="text-lg font-semibold mb-2">Результаты:</h3>
+                    <div className="bg-gray-700 rounded overflow-y-auto" style={{maxHeight: '150px'}}>
+                        <pre>{output}</pre>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default CodeEditor
+export default CodeEditor;
